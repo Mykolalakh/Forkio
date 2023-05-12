@@ -1,0 +1,33 @@
+h1,
+h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 48px;
+
+  color: $white;
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  // line-height: 0;
+}
+a {
+  text-decoration: none;
+}
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}

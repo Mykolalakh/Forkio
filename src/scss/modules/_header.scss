@@ -1,0 +1,257 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 30px;
+  background-color: #27262a;
+  z-index: 100;
+
+  @include min(sm) {
+    padding-top: 22px;
+    padding-bottom: 0;
+  }
+
+  @include min(lg) {
+    position: static;
+    padding-top: 0px;
+    height: 0;
+    background-color: transparent;
+    z-index: 0;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    @include min(sm) {
+      flex-wrap: wrap;
+    }
+
+    @include min(lg) {
+      justify-content: center;
+      align-items: center;
+      padding-top: 30px;
+
+      &__logo {
+        order: 1;
+      }
+
+      .btn-buy {
+        order: 3;
+      }
+
+      &__menu {
+        order: 2;
+      }
+    }
+  }
+
+  &__logo {
+    @include flexRowCenter;
+    align-items: center;
+    gap: 17px;
+    color: $c-header;
+    transition: $time;
+    svg {
+      width: 43px;
+      height: 41px;
+      fill: currentColor;
+    }
+
+    &-name {
+      display: none;
+      font-family: $font-text;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 16px;
+      text-transform: uppercase;
+
+      @include min(sm) {
+        display: block;
+      }
+    }
+    @include min(lg) {
+      flex: auto;
+      justify-content: flex-start;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 13px;
+
+    @include min(sm) {
+      display: block;
+      position: static;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @include min(lg) {
+      width: auto;
+    }
+  }
+
+  &__navbar.active {
+    display: block;
+    width: calc(100% - 26px);
+  }
+  &__menu {
+    margin: 0;
+    background-color: #333333;
+
+    @include min(sm) {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      gap: 39px;
+      margin-top: 23px;
+      margin-bottom: 18px;
+    }
+
+    @include min(lg) {
+      justify-content: flex-end;
+      gap: 47px;
+    }
+
+    &-item {
+      border-bottom: 3px solid #3b3b3b;
+      @include min(sm) {
+        border-bottom: none;
+      }
+    }
+
+    &-link {
+      display: block;
+      position: relative;
+      color: $white;
+      font-size: 26px;
+      line-height: 26px;
+      padding: 29px 0 21px 35px;
+      transition: $time;
+
+      @include min(sm) {
+        font-weight: 700;
+        color: $c-header;
+        font-size: 16px;
+        line-height: 18px;
+        padding: 0;
+      }
+
+      &:hover {
+        color: $c-header;
+
+        @include min(sm) {
+          color: $white;
+        }
+      }
+
+      &:hover::before {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 2px;
+        width: 8px;
+        height: 53px;
+        background-color: $c-header;
+
+        @include min(sm) {
+          position: static;
+        }
+      }
+    }
+
+    @include min(sm) {
+      color: $white;
+    }
+  }
+
+  .btn-buy {
+    @include btnHeader;
+    width: 119px;
+    height: 37px;
+    font-size: 15px;
+    line-height: 15px;
+
+    @include min(sm) {
+      width: 145px;
+      height: 38px;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    @include min(lg) {
+      line-height: 17px;
+      margin-left: 48px;
+    }
+  }
+  .btn-buy:hover {
+    background-color: $white;
+    color: $c-header;
+    border: 1px solid $c-header;
+  }
+
+  &__burger {
+    display: block;
+    position: relative;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: $time;
+
+    @include min(sm) {
+      display: none;
+    }
+  }
+
+  &__burger span {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    @include burgerLine;
+  }
+
+  &__burger.active span {
+    top: 16px;
+    left: 0;
+    width: 23px;
+    height: 2px;
+    transform: rotate(50deg);
+  }
+
+  &__burger::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 0;
+    @include burgerLine;
+    width: 15px;
+  }
+
+  &__burger.active::before {
+    transform: scale(0);
+  }
+
+  &__burger::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @include burgerLine;
+  }
+
+  &__burger.active::after {
+    bottom: 8px;
+    left: 0;
+    width: 23px;
+    height: 2px;
+    transform: rotate(-50deg);
+  }
+}
